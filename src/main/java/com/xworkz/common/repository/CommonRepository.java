@@ -6,4 +6,6 @@ public interface CommonRepository {
 
     boolean saveRegisterDetails(RegisterEntity entity);
 
+    RegisterEntity getRegisterByEmail(String email);
+
 }

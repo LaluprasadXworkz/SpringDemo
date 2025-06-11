@@ -19,11 +19,16 @@ public class CommonServiceImpl implements  CommonService {
         System.out.println("Invoking saveRegisterDto");
         String isCheck=null;
         if(dto!=null){
-            boolean isSaved=repository.saveRegisterDetails(CommonUtil.convertDtoToEntity(dto));
-            if(isSaved){
-                isCheck="Registered ";
+            RegisterEntity emailEntity=repository.getRegisterByEmail(dto.getEmail());
+            if(emailEntity==null) {
+                boolean isSaved = repository.saveRegisterDetails(CommonUtil.convertDtoToEntity(dto));
+                if (isSaved) {
+                    isCheck = "Registered ";
+                } else {
+                    isCheck = "Not Registered ";
+                }
             }else {
-                isCheck="Not Registered ";
+                isCheck="Email allReady Registered ";
             }
         }else {
             isCheck="Register Data is Null";
