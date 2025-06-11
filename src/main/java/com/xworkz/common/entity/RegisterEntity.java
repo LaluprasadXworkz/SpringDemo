@@ -8,6 +8,9 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "register_info")
+@NamedQueries(
+        @NamedQuery(name = "checkEmail",query = "Select r from RegisterEntity r where r.email=:email")
+)
 @Component
 @Data
 public class RegisterEntity {

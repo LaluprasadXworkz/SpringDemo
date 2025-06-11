@@ -3,6 +3,7 @@ package com.xworkz.common.service;
 import com.xworkz.common.dto.RegisterDto;
 import com.xworkz.common.entity.RegisterEntity;
 import com.xworkz.common.repository.CommonRepository;
+import com.xworkz.common.util.CommonUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,9 +19,7 @@ public class CommonServiceImpl implements  CommonService {
         System.out.println("Invoking saveRegisterDto");
         String isCheck=null;
         if(dto!=null){
-            RegisterEntity entity=new RegisterEntity();
-            BeanUtils.copyProperties(dto,entity);
-            boolean isSaved=repository.saveRegisterDetails(entity);
+            boolean isSaved=repository.saveRegisterDetails(CommonUtil.convertDtoToEntity(dto));
             if(isSaved){
                 isCheck="Registered ";
             }else {

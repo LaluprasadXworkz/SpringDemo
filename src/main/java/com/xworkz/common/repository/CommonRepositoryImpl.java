@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 @Repository
@@ -14,7 +15,8 @@ public class CommonRepositoryImpl implements  CommonRepository{
         System.out.println("Invoking saveRegisterDetails ");
         boolean isSaved=false;
         if(entity!=null) {
-            EntityManager manager = Persistence.createEntityManagerFactory("common-module").createEntityManager();
+            EntityManagerFactory emf =Persistence.createEntityManagerFactory("");
+            EntityManager manager=emf.createEntityManager();
             manager.getTransaction().begin();
             manager.persist(entity);
             manager.getTransaction().commit();
