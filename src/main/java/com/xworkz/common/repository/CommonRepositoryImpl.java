@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.NoResultException;
 
 
 @Repository
@@ -32,8 +33,13 @@ public class CommonRepositoryImpl implements  CommonRepository{
 
     @Override
     public RegisterEntity getRegisterByEmail(String email) {
-      return (RegisterEntity) emf.createEntityManager().createNamedQuery("checkEmail").setParameter("email",email).getSingleResult();
-
+        try {
+            return (RegisterEntity) emf.createEntityManager().createNamedQuery("checkEmail").
+                    setParameter("email", email).
+                    getSingleResult();
+        }catch (Exception e){
+            return  null;
+        }
     }
 
 

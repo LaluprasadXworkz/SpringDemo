@@ -1,5 +1,6 @@
 package com.xworkz.common.service;
 
+import com.xworkz.common.dto.LoginDto;
 import com.xworkz.common.dto.RegisterDto;
 import com.xworkz.common.entity.RegisterEntity;
 import com.xworkz.common.repository.CommonRepository;
@@ -34,5 +35,22 @@ public class CommonServiceImpl implements  CommonService {
             isCheck="Register Data is Null";
         }
         return isCheck;
+    }
+
+    @Override
+    public boolean getRegisterByEmailId(LoginDto dto) {
+        System.out.println("Invoking getRegisterByEmailId ");
+        boolean isLogin=false;
+        RegisterEntity registerEntity =repository.getRegisterByEmail(dto.getEmail());
+        if(registerEntity!=null){
+            if(dto.getPassword().equals(registerEntity.getPsw())){
+              isLogin=true;
+            }else {
+                isLogin=false;
+            }
+        }else {
+            isLogin=false;
+        }
+        return isLogin;
     }
 }

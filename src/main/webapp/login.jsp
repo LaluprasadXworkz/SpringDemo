@@ -37,21 +37,59 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" href="">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="">Gallery</a>
+              <a class="nav-link " href="">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="home/redirectToRegister">Register</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="login/">Login</a>
+              <a class="nav-link active" href="">Login</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
+
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="card shadow">
+            <div class="card-header text-center">
+              <h4>Login</h4>
+            </div>
+            <div class="card-body">
+              <form action="../login" method="post">
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email address</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    name="email"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="password" class="form-label">Password</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    name="password"
+                    required
+                  />
+                </div>
+                <div class="d-grid">
+                  <button type="submit" class="btn btn-primary">Login</button>
+                </div>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
