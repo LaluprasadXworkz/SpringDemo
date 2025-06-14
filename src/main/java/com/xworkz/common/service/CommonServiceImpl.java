@@ -5,7 +5,6 @@ import com.xworkz.common.dto.RegisterDto;
 import com.xworkz.common.entity.RegisterEntity;
 import com.xworkz.common.repository.CommonRepository;
 import com.xworkz.common.util.CommonUtil;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -52,5 +51,17 @@ public class CommonServiceImpl implements  CommonService {
             isLogin=false;
         }
         return isLogin;
+    }
+
+    @Override
+    public RegisterDto getRegisterByEmailId(String email) {
+        System.out.println("Invoking getRegisterByEmailId :"+email);
+        RegisterDto dto=null;
+        if(email!=null){
+           RegisterEntity entity= repository.getRegisterByEmail(email);
+           dto=CommonUtil.convertEntityToDto(entity);
+            System.out.println("Profile Data :"+dto);
+        }
+        return dto;
     }
 }

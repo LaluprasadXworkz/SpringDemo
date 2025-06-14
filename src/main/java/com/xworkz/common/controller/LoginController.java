@@ -1,6 +1,7 @@
 package com.xworkz.common.controller;
 
 import com.xworkz.common.dto.LoginDto;
+import com.xworkz.common.dto.RegisterDto;
 import com.xworkz.common.service.CommonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,8 +29,9 @@ public class LoginController {
         System.out.println("Invoking loginMethod " + loginDto);
         boolean isLogin = service.getRegisterByEmailId(loginDto);
         if (isLogin) {
-            model.addAttribute("msg", "Login Success");
-            return "success";
+            RegisterDto registerDto =service.getRegisterByEmailId(loginDto.getEmail());
+            model.addAttribute("register", registerDto);
+            return "profile";
         }
         model.addAttribute("msg", "Login Failed ");
         return "success";
