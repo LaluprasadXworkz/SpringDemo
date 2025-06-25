@@ -16,6 +16,7 @@
     <mysql-version>8.0.33</mysql-version>
     <persistence-version>2.2</persistence-version>
     <hibernate-version>5.6.15.Final</hibernate-version>
+    <spring-security>5.8.16</spring-security>
 
   </properties>
 
@@ -26,6 +27,13 @@
       <groupId>org.springframework</groupId>
       <artifactId>spring-orm</artifactId>
       <version>${spring-version}</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-core</artifactId>
+      <version>${spring-security}</version>
     </dependency>
 
     <dependency>

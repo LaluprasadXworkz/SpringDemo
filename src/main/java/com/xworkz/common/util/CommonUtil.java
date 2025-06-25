@@ -3,8 +3,16 @@ package com.xworkz.common.util;
 import com.xworkz.common.dto.RegisterDto;
 import com.xworkz.common.entity.RegisterEntity;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Component;
 
+@Component
 public class CommonUtil {
+
+    @Autowired
+    BCryptPasswordEncoder passwordEncoder;
+
 
     public static RegisterEntity convertDtoToEntity(RegisterDto registerDto){
         RegisterEntity registerEntity=new RegisterEntity();

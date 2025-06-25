@@ -8,8 +8,10 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "register_info")
-@NamedQueries(
-        @NamedQuery(name = "checkEmail",query = "Select r from RegisterEntity r where r.email=:email")
+@NamedQueries({
+        @NamedQuery(name = "checkEmail", query = "Select r from RegisterEntity r where r.email=:email"),
+        @NamedQuery(name = "ValidateRegisterByPhoneNumber",query = "select r from RegisterEntity r where r.phoneNumber=:mobileNumber")
+}
 )
 @Component
 @Data

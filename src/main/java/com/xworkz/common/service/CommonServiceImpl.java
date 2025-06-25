@@ -5,13 +5,18 @@ import com.xworkz.common.dto.RegisterDto;
 import com.xworkz.common.entity.RegisterEntity;
 import com.xworkz.common.repository.CommonRepository;
 import com.xworkz.common.util.CommonUtil;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CommonServiceImpl implements  CommonService {
     @Autowired
     CommonRepository repository;
+
+    @Autowired
+    BCryptPasswordEncoder passwordEncoder;
 
 
     @Override
@@ -21,7 +26,12 @@ public class CommonServiceImpl implements  CommonService {
         if(dto!=null){
             RegisterEntity emailEntity=repository.getRegisterByEmail(dto.getEmail());
             if(emailEntity==null) {
-                boolean isSaved = repository.saveRegisterDetails(CommonUtil.convertDtoToEntity(dto));
+                RegisterEntity registerEntity=new RegisterEntity();
+               String encodedPsw=passwordEncoder.encode(dto.getPsw());
+                System.out.println(encodedPsw);
+               BeanUtils.copyProperties(dto,registerEntity);
+                registerEntity.setPsw(encodedPsw);
+                boolean isSaved = repository.saveRegisterDetails(registerEntity);
                 if (isSaved) {
                     isCheck = "Registered ";
                 } else {
@@ -64,4 +74,24 @@ public class CommonServiceImpl implements  CommonService {
         }
         return dto;
     }
+
+    @Override
+    public String validateRegisterByPoneNumber(Long mobile) {
+        System.out.println("Invoking validateRegisterByPoneNumber");
+        String isValidate=null;
+        if(mobile!=0l){
+            RegisterEntity entity=repository.getRegisterByPhoneNumber(mobile);
+            if(entity==null){
+                isValidate="Phone number not exist";
+
+            }else {
+                isValidate="Phone number already exist ";
+            }
+
+        }else{
+            isValidate="";
+        }
+        return isValidate;
+    }
+
 }

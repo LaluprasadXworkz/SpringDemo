@@ -8,4 +8,6 @@ public interface CommonRepository {
 
     RegisterEntity getRegisterByEmail(String email);
 
+    RegisterEntity  getRegisterByPhoneNumber(Long mobileNumber);
+
 }

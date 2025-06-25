@@ -42,5 +42,17 @@ public class CommonRepositoryImpl implements  CommonRepository{
         }
     }
 
+    @Override
+    public RegisterEntity getRegisterByPhoneNumber(Long mobileNumber) {
+        try{
+            return (RegisterEntity) emf.createEntityManager().createNamedQuery("ValidateRegisterByPhoneNumber")
+                    .setParameter("mobileNumber",mobileNumber).
+                    getSingleResult();
+        }catch (Exception e){
+            return null;
+        }
+
+    }
+
 
 }
