@@ -9,5 +9,8 @@ public interface CommonRepository {
     RegisterEntity getRegisterByEmail(String email);
 
     RegisterEntity  getRegisterByPhoneNumber(Long mobileNumber);
+    void updateOtpByEmail(String newOtp,String email);
+    RegisterEntity getRegisterById(Integer id);
+    boolean updateRegister(RegisterEntity entity);
 
 }

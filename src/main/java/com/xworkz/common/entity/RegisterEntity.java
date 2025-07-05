@@ -10,7 +10,10 @@ import javax.persistence.*;
 @Table(name = "register_info")
 @NamedQueries({
         @NamedQuery(name = "checkEmail", query = "Select r from RegisterEntity r where r.email=:email"),
-        @NamedQuery(name = "ValidateRegisterByPhoneNumber",query = "select r from RegisterEntity r where r.phoneNumber=:mobileNumber")
+        @NamedQuery(name = "ValidateRegisterByPhoneNumber",query = "select r from RegisterEntity r where r.phoneNumber=:mobileNumber"),
+        @NamedQuery(name = "setOtpByEmail",query = "Update RegisterEntity r set r.otp=:newOtp where r.email=:email "),
+        @NamedQuery(name = "updateRegisterByImageName",query="Update RegisterEntity r " +
+                "set r.userName=:userName,r.phoneNumber=:phoneNumber, r.imageName=:imageName  where r.registerId=:registerId ")
 }
 )
 @Component
@@ -33,4 +36,7 @@ public class RegisterEntity {
 
     @Column(name = "confirm_psw")
     private String cPsw;
+
+    private String otp;
+    private String imageName;
 }

@@ -10,8 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class CommonUtil {
 
-    @Autowired
-    BCryptPasswordEncoder passwordEncoder;
+    public static String UPLOADED_FOLDER = "C://Users//lalup//OneDrive//Desktop//spring//image//";
 
 
     public static RegisterEntity convertDtoToEntity(RegisterDto registerDto){

@@ -34,52 +34,34 @@
     </nav>
 
     <div class="container mt-5">
-        <h2 class="mb-4 text-center text-success">Register</h2>
+        <h2 class="mb-4 text-center text-success">Profile Update </h2>
         <div class="row justify-content-center">
             <div class="col-md-6 col-lg-4">
-                <form method="post" action="/common-module/register/save">
+                <form method="post" action="/common-module/update" enctype="multipart/form-data">
+                    <input type="text"  name="registerId" value="${register.registerId}"  />
+
                     <div class="mb-3">
                         <label for="userName" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="userName" name="userName" required />
+                        <input type="text" class="form-control" id="userName" name="userName" value="${register.userName}" />
                     </div>
                     <div class="mb-3">
                         <label for="phoneNumber" class="form-label">Phone Number</label>
-                        <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" pattern="[0-9]{10}"
-                            onchange="CheckPhoneNumber()" required />
+                        <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" value="${register.phoneNumber}"/>
                         <span class="error" id="phoneNumberError"></span>
                     </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="email" name="email" required />
+
+                     <div class="mb-3">
+                        <label for="photo" class="form-label">Uplode image </label>
+                        <input type="file" class="form-control" id="photo" name="file"/>
                     </div>
-                    <div class="mb-3">
-                        <label for="psw" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="psw" name="psw" required />
-                    </div>
-                    <div class="mb-3">
-                        <label for="cPsw" class="form-label">Confirm Password</label>
-                        <input type="password" class="form-control" id="cPsw" name="cPsw" required />
-                    </div>
+
                     <div class="text-center">
-                        <button type="submit" class="btn btn-primary px-4">Register</button>
+                        <button type="submit" class="btn btn-primary px-4">Edit</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-
-    <script>
-        function CheckPhoneNumber() {
-            let pnum = document.getElementById("phoneNumber").value;
-            console.log("CheckPhoneNumber", pnum);
-            const req = new XMLHttpRequest();
-            req.open("GET", "/common-module/api/common/checkMobileNumber/" + pnum);
-            req.send();
-            req.onload = function() {
-                document.getElementById("phoneNumberError").innerHTML = this.responseText;
-            }
-        }
-    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

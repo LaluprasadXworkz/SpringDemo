@@ -9,19 +9,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("register/")
+@RequestMapping("register")
 public class RegisterController {
 
     @Autowired
     CommonService service;
 
-
-    @PostMapping("saveRegistration")
+    @PostMapping("save")
     public String saveRegistration(RegisterDto dto, Model model) {
         System.out.println("Invoking saveRegistration ");
         System.out.println("Received: " + dto);
-       String message= service.saveRegisterDto(dto);
-       model.addAttribute("msg",message);
+        String message = service.saveRegisterDto(dto);
+        model.addAttribute("msg", message);
         return "success";
     }
 }

@@ -9,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("login")
@@ -29,13 +28,12 @@ public class LoginController {
         System.out.println("Invoking loginMethod " + loginDto);
         boolean isLogin = service.getRegisterByEmailId(loginDto);
         if (isLogin) {
-            RegisterDto registerDto =service.getRegisterByEmailId(loginDto.getEmail());
+            RegisterDto registerDto = service.getRegisterByEmailId(loginDto.getEmail());
+            System.out.println("registerDto :"+registerDto);
             model.addAttribute("register", registerDto);
             return "profile";
         }
-        model.addAttribute("msg", "Login Failed ");
+        model.addAttribute("msg", "Login Failed");
         return "success";
     }
-
-
 }

@@ -10,6 +10,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
@@ -21,8 +22,11 @@ import java.util.Properties;
 @ComponentScan(basePackages = "com.xworkz")
 public class CommonConfiguration {
 
+
     @Autowired
     Environment environment;
+
+    private int maxUploadSizeInMb = 5 * 1024 * 1024; // 5 MB
 
     @Bean
     public ViewResolver viewResolver() {
@@ -63,5 +67,14 @@ public class CommonConfiguration {
     public BCryptPasswordEncoder bCryptPasswordEncoder(){
         return new BCryptPasswordEncoder();
     }
+
+    @Bean
+    public CommonsMultipartResolver multipartResolver() {
+        CommonsMultipartResolver cmr = new CommonsMultipartResolver();
+        cmr.setMaxUploadSize(maxUploadSizeInMb * 2);
+        cmr.setMaxUploadSizePerFile(maxUploadSizeInMb); //bytes
+        return cmr;
+    }
+
 
 }

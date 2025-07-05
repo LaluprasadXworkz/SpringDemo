@@ -1,17 +1,18 @@
 package com.xworkz.common.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("home/")
+@RequestMapping("home")
+@Slf4j
 public class HomeController {
 
-    @GetMapping("redirectToRegister")
+    @GetMapping("register")
     public String redirectToRegister() {
-        System.out.println("Invoking redirectToRegister");
+        log.info("Invoking redirectToRegister");
         return "register";
     }
-
 }

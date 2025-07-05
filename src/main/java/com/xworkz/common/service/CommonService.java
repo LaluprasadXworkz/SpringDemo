@@ -9,4 +9,9 @@ public interface CommonService {
     boolean getRegisterByEmailId(LoginDto dto);
     RegisterDto getRegisterByEmailId(String email);
     String validateRegisterByPoneNumber(Long mobile);
+    String generateOtp(String email);
+    boolean validateOtp(String email,String otp);
+    RegisterDto getRegisterById(Integer id);
+    boolean updateRegisterById(RegisterDto dto);
+
 }
