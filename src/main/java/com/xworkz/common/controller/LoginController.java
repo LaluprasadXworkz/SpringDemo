@@ -3,6 +3,7 @@ package com.xworkz.common.controller;
 import com.xworkz.common.dto.LoginDto;
 import com.xworkz.common.dto.RegisterDto;
 import com.xworkz.common.service.CommonService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("login")
+@Slf4j
 public class LoginController {
 
     @Autowired
@@ -19,7 +21,7 @@ public class LoginController {
 
     @GetMapping
     public String redirectToLogin() {
-        System.out.println("Invoking redirectToLogin");
+        log.info("Invoking redirectToLogin");
         return "login";
     }
 

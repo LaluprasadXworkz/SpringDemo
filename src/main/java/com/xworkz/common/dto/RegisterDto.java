@@ -17,4 +17,7 @@ public class RegisterDto {
     private String imageName;
     MultipartFile file;
 
+    public MultipartFile getFile() {
+        return file;
+    }
 }

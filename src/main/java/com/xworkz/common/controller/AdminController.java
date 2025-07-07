@@ -69,7 +69,7 @@ public class AdminController {
     @PostMapping("update")
     public String updateProfile(RegisterDto dto,Model model){
         System.out.println("updateProfile :"+dto);
-        boolean isUpdated=service.updateRegisterById(dto);
+        boolean isUpdated=service.updateRegister(dto);
         if(isUpdated) {
             RegisterDto registerDto = service.getRegisterById(dto.getRegisterId());
             System.out.println("registerDto :"+registerDto);

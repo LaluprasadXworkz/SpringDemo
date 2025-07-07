@@ -109,7 +109,12 @@ public class CommonRepositoryImpl implements CommonRepository {
         EntityManager manager = emf.createEntityManager();
         try {
             manager.getTransaction().begin();
-            manager.createNamedQuery("updateRegisterByImageName").setParameter("userName", entity.getUserName()).setParameter("phoneNumber", entity.getPhoneNumber()).setParameter("imageName", entity.getImageName()).setParameter("registerId", entity.getRegisterId()).executeUpdate();
+            manager.createNamedQuery("updateRegisterByImageName")
+                    .setParameter("userName", entity.getUserName())
+                    .setParameter("phoneNumber", entity.getPhoneNumber())
+                    .setParameter("imageName", entity.getImageName())
+                    .setParameter("registerId", entity.getRegisterId())
+                    .executeUpdate();
             manager.getTransaction().commit();
             log.info("Data updated successfully for email: {}", entity.getEmail());
             return true;

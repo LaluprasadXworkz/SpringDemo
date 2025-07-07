@@ -145,7 +145,7 @@ public class CommonServiceImpl implements CommonService {
     }
 
     @Override
-    public boolean updateRegisterById(RegisterDto dto) {
+    public boolean updateRegister(RegisterDto dto) {
         System.out.println("Updating register with ID: " + dto);
         boolean isUpdated = false;
 

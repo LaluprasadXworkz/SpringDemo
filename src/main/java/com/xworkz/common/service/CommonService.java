@@ -12,6 +12,6 @@ public interface CommonService {
     String generateOtp(String email);
     boolean validateOtp(String email,String otp);
     RegisterDto getRegisterById(Integer id);
-    boolean updateRegisterById(RegisterDto dto);
+    boolean updateRegister(RegisterDto dto);
 
 }
