@@ -18,6 +18,7 @@ public class EmailSenderImpl implements  EmailSender{
       simpleMailMessage.setTo(email);
       simpleMailMessage.setSubject("Otp to login");
       simpleMailMessage.setText("Otp for login "+otp);
+
       configuration.mailSender().send(simpleMailMessage);
         System.out.println("Otp sent for :"+email+" : "+otp);
     }

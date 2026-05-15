@@ -1,24 +1,25 @@
 package com.xworkz.common.entity;
 
-
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "register_info")
 @NamedQueries({
         @NamedQuery(name = "checkEmail", query = "Select r from RegisterEntity r where r.email=:email"),
-        @NamedQuery(name = "ValidateRegisterByPhoneNumber",query = "select r from RegisterEntity r where r.phoneNumber=:mobileNumber"),
-        @NamedQuery(name = "setOtpByEmail",query = "Update RegisterEntity r set r.otp=:newOtp where r.email=:email "),
-        @NamedQuery(name = "updateRegisterByImageName",query="Update RegisterEntity r " +
-                "set r.userName=:userName,r.phoneNumber=:phoneNumber, r.imageName=:imageName  where r.registerId=:registerId ")
-}
-)
+        @NamedQuery(name = "ValidateRegisterByPhoneNumber", query = "select r from RegisterEntity r where r.phoneNumber=:mobileNumber"),
+        @NamedQuery(name = "setOtpByEmail", query = "Update RegisterEntity r set r.otp=:newOtp where r.email=:email "),
+        @NamedQuery(name = "updateRegisterByImageName",
+                query = "Update RegisterEntity r set r.userName=:userName, r.phoneNumber=:phoneNumber, r.imageName=:imageName where r.registerId=:registerId")
+})
 @Component
 @Data
 public class RegisterEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "register_id")
@@ -38,5 +39,7 @@ public class RegisterEntity {
     private String cPsw;
 
     private String otp;
+
+    @Column(name = "image_name")
     private String imageName;
 }

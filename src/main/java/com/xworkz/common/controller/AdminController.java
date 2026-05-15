@@ -84,9 +84,10 @@ public class AdminController {
     }
 
     @GetMapping("/display")
-    public void displayUserImage(HttpServletResponse response, @RequestParam String imagepath)throws IOException{
-        File file = new File(CommonUtil.UPLOADED_FOLDER + File.separator + imagepath);
-        try (InputStream in = new BufferedInputStream(new FileInputStream(file));
+    public void displayUserImage(HttpServletResponse response, @RequestParam String imageName)throws IOException{
+        File file = new File(CommonUtil.UPLOADED_FOLDER + File.separator + imageName);
+        FileInputStream fileInputStream = new FileInputStream(file);
+        try (InputStream in = new BufferedInputStream(fileInputStream);
              ServletOutputStream out = response.getOutputStream()) {
             IOUtils.copy(in, out);
             response.flushBuffer();

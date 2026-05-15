@@ -94,7 +94,7 @@ public class CommonServiceImpl implements CommonService {
         String status = "Invalid mobile number";
 
         if(mobile != null && mobile != 0L) {
-            RegisterEntity entity = repository.getRegisterByPhoneNumber(mobile);
+            RegisterEntity entity = repository.getRegisterByPhoneNumber(mobile); //entity ella andra nulll
             status = (entity == null) ? "Phone number not exist" : "Phone number already exist";
         }
         return status;

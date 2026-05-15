@@ -34,7 +34,7 @@
             </a>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <div class="d-flex align-items-center">
-                            <img src="display?imagepath=${register.getImageName()}" alt="Profile" class="profile-img">
+                            <img src="display?imageName=${register.getImageName()}" alt="Profile" class="profile-img">
                     <span class="text-white me-3">${register.userName}</span>
                 </div>
                 <ul class="navbar-nav">
@@ -53,7 +53,7 @@
         <div class="row justify-content-center">
             <div class="col-md-6 text-center">
 
-                        <img src="display?imagepath=${register.getImageName()}" alt="Profile" class="profile-img-large">
+                        <img src="display?imageName=${register.getImageName()}" alt="Profile" class="profile-img-large">
 
                 <table class="table table-bordered">
                     <tbody>

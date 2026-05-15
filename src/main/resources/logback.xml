@@ -7,7 +7,7 @@
         </encoder>
     </appender>
     <appender name="FIlE" class="ch.qos.logback.core.FileAppender">
-        <file>C:/Users/lalup/OneDrive/Desktop/spring/application-logers/text1.log</file>
+        <file>C:/Users/lalup/OneDrive/Desktop/log/abc.log</file>
         <append></append>
         <encoder>
             <pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{36}.%M - %msg%n</pattern>

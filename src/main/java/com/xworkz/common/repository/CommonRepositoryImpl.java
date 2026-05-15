@@ -55,18 +55,30 @@ public class CommonRepositoryImpl implements CommonRepository {
 
     @Override
     public RegisterEntity getRegisterByPhoneNumber(Long mobileNumber) {
-        EntityManager manager = emf.createEntityManager();
+
+        log.info("getRegisterByPhoneNumber Repo: {}", mobileNumber);
+        RegisterEntity entity=null;
         try {
-            return (RegisterEntity) manager.createNamedQuery("ValidateRegisterByPhoneNumber").setParameter("mobileNumber", mobileNumber).getSingleResult();
-        } catch (NoResultException e) {
-            log.warn("No user found with phone number: {}", mobileNumber);
-            return null;
-        } catch (Exception e) {
-            log.error("Error fetching user by phone number", e);
-            return null;
-        } finally {
-            manager.close();
+           entity = (RegisterEntity) emf.createEntityManager().createNamedQuery("ValidateRegisterByPhoneNumber").setParameter("mobileNumber", mobileNumber).getSingleResult();
+        }catch (Exception e){
+            e.printStackTrace();
+            entity=null;
+             log.error("Error fetching user by phone number", e);
         }
+        return entity;
+
+//        EntityManager manager = emf.createEntityManager();
+//        try {
+//            return (RegisterEntity) manager.createNamedQuery("ValidateRegisterByPhoneNumber").setParameter("mobileNumber", mobileNumber).getSingleResult();
+//        } catch (NoResultException e) {
+//            log.warn("No user found with phone number: {}", mobileNumber);
+//            return null;
+//        } catch (Exception e) {
+//            log.error("Error fetching user by phone number", e);
+//            return null;
+//        } finally {
+//            manager.close();
+//        }
     }
 
     @Override

@@ -1,7 +1,6 @@
 package com.xworkz.common.configuration;
 
 import org.springframework.context.annotation.Configuration;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 
 import java.util.Properties;
@@ -14,7 +13,9 @@ public class EmailConfiguration {
         javaMailSender.setHost("smtp.gmail.com");
         javaMailSender.setPort(587);
         javaMailSender.setUsername("laluprasadm.xworkz@gmail.com");
-        javaMailSender.setPassword("");
+        javaMailSender.setPassword("uxdq pyml luih ltou");
+
+
         Properties properties =javaMailSender.getJavaMailProperties();
         properties.put("mail.transport.protocol","smtp");
         properties.put("mail.smtp.auth","true");

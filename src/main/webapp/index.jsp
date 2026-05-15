@@ -12,7 +12,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="/common-module/">
-                <img src="https://www.x-workz.in/Logo.png" alt="xyz" height="50" class="d-inline-block align-text-top" />
+                <img src="https://www.x-workz.com/Logo.png" alt="xyz" height="50" class="d-inline-block align-text-top" />
             </a>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">

@@ -17,7 +17,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import javax.sql.DataSource;
 import java.util.Properties;
 
-@PropertySource("classpath:connection.properties")
+@PropertySource("classpath:application.properties")
 @Configuration
 @ComponentScan(basePackages = "com.xworkz")
 public class CommonConfiguration {
@@ -26,7 +26,7 @@ public class CommonConfiguration {
     @Autowired
     Environment environment;
 
-    private int maxUploadSizeInMb = 5 * 1024 * 1024; // 5 MB
+    private int maxUploadSizeInMb = 5 * 1024 * 1024;
 
     @Bean
     public ViewResolver viewResolver() {
@@ -72,7 +72,7 @@ public class CommonConfiguration {
     public CommonsMultipartResolver multipartResolver() {
         CommonsMultipartResolver cmr = new CommonsMultipartResolver();
         cmr.setMaxUploadSize(maxUploadSizeInMb * 2);
-        cmr.setMaxUploadSizePerFile(maxUploadSizeInMb); //bytes
+        cmr.setMaxUploadSizePerFile(maxUploadSizeInMb);
         return cmr;
     }
 
