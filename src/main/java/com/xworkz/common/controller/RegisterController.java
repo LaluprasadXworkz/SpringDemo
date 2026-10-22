@@ -2,6 +2,8 @@ package com.xworkz.common.controller;
 
 import com.xworkz.common.dto.RegisterDto;
 import com.xworkz.common.service.CommonService;
+import com.xworkz.common.service.CommonServiceImpl;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

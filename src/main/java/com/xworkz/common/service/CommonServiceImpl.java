@@ -37,6 +37,7 @@ public class CommonServiceImpl implements CommonService {
         String status = "Register Data is Null";
 
         if(dto != null) {
+
             RegisterEntity emailEntity = repository.getRegisterByEmail(dto.getEmail());
 
             if(emailEntity == null) {
@@ -49,6 +50,9 @@ public class CommonServiceImpl implements CommonService {
 
                 boolean isSaved = repository.saveRegisterDetails(registerEntity);
                 status = isSaved ? "Registered" : "Not Registered";
+
+
+                return "";
             } else {
                 status = "Email already Registered";
             }
